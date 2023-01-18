@@ -1,0 +1,39 @@
+<h2 class="title">Lista de E-Mail</h2>
+
+<div>
+    <div class="action-button-group">
+        <button mat-raised-button *ngIf="!showAdd" (click)="ShowAdd()" class="primary-bg-color"><mat-icon>add</mat-icon>
+            Adicionar</button>
+    </div>
+
+    <app-ktable [data]="this.data" (rowClick)="rowClick($event)"></app-ktable>
+</div>
+<br><br>
+<div class="container" *ngIf="showAdd">
+    <h3 class="title" *ngIf="this.id==0">Adicionar um novo Contato</h3>
+    <h3 class="title" *ngIf="this.id!=0">Editar Contato</h3>
+    <div class="div-insert">
+        <label *ngIf="this.input_id_contato==0">Contato: </label>
+        <mat-form-field appearance="fill" *ngIf="this.input_id_contato==0">
+            <mat-label>Selecione o Contato</mat-label>
+            <mat-select [(ngModel)]="id_contato">
+              <mat-option *ngFor="let contato of lista_contatos" [value]="contato['id']">
+                {{contato['nome']}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <label>E-Mail: </label>
+        <input #firstInput type="text" [value]="email" [(ngModel)]="email">
+    </div>
+    
+    <div class="action-button-group">
+        <button mat-raised-button *ngIf="showAdd" (click)="CloseAdd()"
+            class="primary-bg-color"><mat-icon>close</mat-icon> Cancelar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id!=0" (click)="Delete()"
+            class="warn-bg-color"><mat-icon>delete</mat-icon> Deletar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id==0" (click)="Add()"
+            class="confirm-bg-color"><mat-icon>check</mat-icon> Confirmar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id!=0" (click)="Edit()"
+            class="confirm-bg-color"><mat-icon>check</mat-icon> Atualizar</button>
+    </div>
+</div>

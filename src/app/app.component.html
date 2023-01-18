@@ -1,0 +1,26 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav class="sidenavstyle">
+    <mat-list>
+      <mat-list-item><a routerLink="">Home</a></mat-list-item>
+      <mat-list-item><a routerLink="pessoas">Pessoas</a></mat-list-item>
+      <mat-list-item><a routerLink="contatos">Contatos</a></mat-list-item>
+      <mat-list-item><a routerLink="telefones">Telefones</a></mat-list-item>
+      <mat-list-item><a routerLink="emails">E-Mails</a></mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-toolbar class="toolbar" color="primary" #toolbar>
+    <a href="javascript:void(0);" (click)="sidenav.open()">
+      <mat-icon>menu</mat-icon>
+    </a>
+    <span>Listagem de Contatos</span>
+  </mat-toolbar>
+  <div class="content">
+    <router-outlet></router-outlet>
+    <br>
+  </div>
+  <footer color="primary">
+    <span>
+      Desenvolvido por Kevin Fávaro - 2023
+    </span>
+  </footer>
+</mat-sidenav-container>

@@ -1,0 +1,32 @@
+<h2 class="title">Lista de Pessoas</h2>
+
+<div>
+    <div class="action-button-group">
+        <button mat-raised-button *ngIf="!showAdd" (click)="ShowAdd()" class="primary-bg-color"><mat-icon>add</mat-icon>
+            Adicionar</button>
+    </div>
+
+    <app-ktable [data]="this.data" (rowClick)="rowClick($event)"></app-ktable>
+</div>
+<br><br>
+<div class="container" *ngIf="showAdd">
+    <h3 class="title" *ngIf="this.id==0">Adicionar uma nova Pessoa</h3>
+    <h3 class="title" *ngIf="this.id!=0">Editar Pessoa</h3>
+    <div class="div-insert">
+        <label>Nome: </label>
+        <input #firstInput type="text" [value]="nome" [(ngModel)]="nome">
+    </div>
+
+    <div class="action-button-group">
+        <button mat-raised-button *ngIf="showAdd" (click)="CloseAdd()"
+            class="primary-bg-color"><mat-icon>close</mat-icon> Cancelar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id!=0" (click)="Delete()"
+            class="warn-bg-color"><mat-icon>delete</mat-icon> Deletar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id==0" (click)="Add()"
+            class="confirm-bg-color"><mat-icon>check</mat-icon> Confirmar</button>
+        <button mat-raised-button *ngIf="showAdd && this.id!=0" (click)="Edit()"
+            class="confirm-bg-color"><mat-icon>check</mat-icon> Atualizar</button>
+    </div>
+</div>
+
+<app-contatos *ngIf="showAdd && this.id!=0" [input_id_pessoa]="this.id"></app-contatos>

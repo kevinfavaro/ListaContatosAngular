@@ -1,0 +1,184 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ListaContatos-primary: mat.define-palette(mat.$indigo-palette);
+$ListaContatos-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ListaContatos-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ListaContatos-theme: mat.define-light-theme((
+  color: (
+    primary: $ListaContatos-primary,
+    accent: $ListaContatos-accent,
+    warn: $ListaContatos-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ListaContatos-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0;font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.primary-bg-color {
+  background-color: #3f51b5;
+}
+
+.confirm-bg-color {
+  background-color: #4cb452;
+}
+
+.second-bg-color {
+  background-color: #a5b2ff;
+}
+
+.warn-bg-color {
+  background-color: #f44336;
+}
+
+div.content div.container {
+  background-color: white;
+  margin-bottom: 18px;
+  padding: 16px;
+  border-top: 2px solid lightgray;
+}
+
+.title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+div.card {
+  margin-right: 8px;
+  margin-left: 8px;
+
+  label.contador{
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+button.float{
+  position: fixed;
+  bottom: 50px;
+  border-radius: 100%;
+  border: 0px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  .mat-icon{
+    color: white;
+  }
+}
+
+button.float-first{
+  right: 8px;
+  width: 48px;
+  height: 48px;
+
+  .mat-icon{
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+  }
+}
+
+button.float-first-aux{
+  right: 8px;
+  width: 48px;
+  height: 48px;
+  bottom: 103px;
+
+  .mat-icon{
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+  }
+}
+
+button.float-second{
+  right: 64px;
+  width: 32px;
+  height: 32px;
+
+  .mat-icon{
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+  }
+}
+
+button.float-third{
+  right: 104px;
+  width: 32px;
+  height: 32px;
+
+  .mat-icon{
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+  }
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: lightblue;
+}
+
+.action-button-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: stretch;
+  button{
+    width: 100%;
+    margin: 8px;
+    border-radius: 4px;
+    border: 0px solid;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 32px;
+  }
+}
+
+div.div-insert{
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-gap: 8px;
+  align-items: center;
+}
+
+* { 
+  transition: all 200ms ease;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
